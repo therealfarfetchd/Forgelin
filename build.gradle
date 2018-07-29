@@ -21,9 +21,10 @@ plugins {
 apply plugin: "kotlin"
 apply plugin: "net.minecraftforge.gradle.forge"
 // apply from: "https://github.com/shadowfacts/maven/raw/master/maven.gradle"
-apply from: "publish.gradle"
 
 version = mod_version
+
+apply from: "publish.gradle"
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
