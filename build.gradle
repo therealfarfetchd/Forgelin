@@ -5,6 +5,7 @@ buildscript {
 			name "forge"
 			url "http://files.minecraftforge.net/maven/"
 		}
+		maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
 	}
 	dependencies {
 		classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
@@ -53,6 +54,7 @@ processResources {
 
 repositories {
 	jcenter()
+	maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
 }
 
 dependencies {
@@ -60,8 +62,8 @@ dependencies {
 	compile group: "org.jetbrains.kotlin", name: "kotlin-stdlib-jdk8", version: kotlin_version
 	compile group: "org.jetbrains.kotlin", name: "kotlin-reflect", version: kotlin_version
 	compile group: "org.jetbrains", name: "annotations", version: annotations_version
-	compile group: "org.jetbrains.kotlinx", name: "kotlinx-coroutines-core", version: coroutines_version
-	compile group: "org.jetbrains.kotlinx", name: "kotlinx-coroutines-jdk8", version: coroutines_version
+	// compile group: "org.jetbrains.kotlinx", name: "kotlinx-coroutines-core", version: coroutines_version
+	// compile group: "org.jetbrains.kotlinx", name: "kotlinx-coroutines-jdk8", version: coroutines_version
 }
 
 jar {
@@ -77,8 +79,8 @@ shadowJar {
 		include(dependency("org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"))
 		include(dependency("org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}"))
 		include(dependency("org.jetbrains:annotations:${annotations_version}"))
-		include(dependency("org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutines_version}"))
-		include(dependency("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:${coroutines_version}"))
+		// include(dependency("org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutines_version}"))
+		// include(dependency("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:${coroutines_version}"))
 	}
 	manifest {
 		attributes "FMLCorePlugin": "net.shadowfacts.forgelin.preloader.ForgelinPlugin",
@@ -99,5 +101,3 @@ reobf {
 }
 tasks.reobfShadowJar.mustRunAfter shadowJar
 tasks.build.dependsOn reobfShadowJar
-
-
